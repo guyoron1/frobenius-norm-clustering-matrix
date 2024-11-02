@@ -1,0 +1,15 @@
+CC = gcc
+
+CFLAGS = -ansi -Wall -Wextra -Werror -pedantic-errors
+
+symnmf: symnmf.o mat_utils.o
+	$(CC) -o symnmf symnmf.o mat_utils.o $(CFLAGS) -lm
+
+symnmf.o: symnmf.c symnmf.h
+	$(CC) -c symnmf.c $(CFLAGS)
+
+mat_utils.o: mat_utils.c mat_utils.h
+	$(CC) -c mat_utils.c $(CFLAGS)
+
+clean:
+	rm -f *.o symnmf
